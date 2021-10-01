@@ -14,3 +14,7 @@
 - Try running the app locally  with `heroku local` (basically the same as `flask run`, but now we want to make sure Heroku can start the app as well.)
 - Deploy with `git push heroku main` (or `master` if that's the name of your main branch)
 - Wait for the deploy script to run, then visit the deployed app in your browser using the url provided by the script!
+
+## Note
+- To clarify, Docker is used as a development container only in this case, the deployment to Heroku is normal code.
+
