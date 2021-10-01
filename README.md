@@ -1,4 +1,4 @@
-# Boilerplate for Python Flask project, deployable to Heroku
+# Python Flask boilerplate project, deployable to Heroku
 
 Intended for use on VSCode Docker devcontainer, should work out of the box. Note that Docker is used for local development only, the deployment to Heroku is not containerized.
 
