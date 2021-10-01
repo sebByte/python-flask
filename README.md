@@ -6,7 +6,6 @@
 - Make sure you have Docker and the Visual Studio Code extension _Remote - Containers_ (id: ms-vscode-remote.remote-containers) installed locally.
 - Clone this repo.
 - Open folder in Visual Studio Code, it should suggest to _Reopen in container_. If not, choose _Remote-Containers: Reopen Folder in Container_ from the Command Palette.
-- Install dependencies with `pip install -r requirements.txt`
 - Try running the app with `flask run` in the VSCode terminal, it shoult open in your browser (VSCode will tell you the URL)
 
 ## Deplyment to Heroku
