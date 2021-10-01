@@ -1,6 +1,6 @@
 # Boilerplate for Python Flask project, deployable to Heroku
 
-- Intended for use on VSCode Docker devcontainer
+Intended for use on VSCode Docker devcontainer, should work out of the box. Note that Docker is used for local development only, the deployment to Heroku is not containerized.
 
 ## Setup
 - Make sure you have Docker and the Visual Studio Code extension _Remote - Containers_ (id: ms-vscode-remote.remote-containers) installed locally.
@@ -15,6 +15,5 @@
 - Deploy with `git push heroku main` 
 - Wait for the deploy script to run, then visit the deployed app in your browser using the url provided by the script!
 
-## Note
-- To clarify, Docker is used as a development container only in this case, the deployment to Heroku is normal code.
+
 
