@@ -8,7 +8,7 @@ Intended for use on VSCode Docker devcontainer, should work out of the box. Note
 - Open folder in Visual Studio Code, it should suggest to _Reopen in container_. If not, choose _Remote-Containers: Reopen Folder in Container_ from the Command Palette.
 - Try running the app with `flask run` in the VSCode terminal, it shoult open in your browser (VSCode will tell you the URL)
 
-## Deplyment to Heroku
+## Deployment to Heroku
 - The files _Procfile_, _wsgi.py_ and _runtime.txt_ contain all the info Heroku needs to run the app.
 - Create the Heroku app with `heroku create` in the VSCode terminal.
 - Try running the app locally  with `heroku local` (basically the same as `flask run`, but now we want to make sure Heroku can start the app as well.)
