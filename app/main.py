@@ -50,21 +50,42 @@ def index():
     
     return jsonify(ret)
 
-'''
-# Notes, function
-def get_notes():
-    return [
-        { "text": "foo"},
-        { "text": "bar"}
-    ]
+class Order(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    #date
+    cabin = db.Column(db.string(120))
+    service = db.Column(db.string(120))
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    updated_at = db.Column(db.DateTime(), default=db.func.now(), onupdate=db.func.now())
 
-# Route: /notes
-@app.route("/notes")
-def notes():
-    print("Hello notes") # "ConsoleLog"
-    return jsonify(get_notes())
+# Default route to /orders
+@app.route("/orders", methods = ['GET', 'POST', 'PUT', 'DELETE'])
+def order():
+    order = []
+    
+    # GET all orders
+    if request.method == 'GET':
+        # Loop for every line in the User-column and add them to ret
+        for u in Order.query.all():
+            order.append({'id': u.id, 'cabin': u.cabin, 'service': u.service, 'email': u.email, 'updated_at': u.updated_at})
+    
+    # POST/Create a new user
+    if request.method == 'POST':
+        body = request.get_json()
+        new_order = Order(
+            cabin=body['cabin'],
+            service=body['service'],
+            email=body['email']
+        )
+        db.session.add(new_order)
+        db.session.commit()
+        order = [ "New order added" ]
 
-# Run app if called directly
-if __name__ == "__main__":
-    app.run()
-'''
+    # PUT/Update user
+    if request.method == 'PUT':
+        order = [ "PUT" ]
+
+    if request.method == 'DELETE':
+        order = [ "DELETE" ]
+    
+    return jsonify(order)

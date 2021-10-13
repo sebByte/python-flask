@@ -5,7 +5,11 @@
 GET {{remoteURL}}
 
 ### POST, Create new user
-POST {{remoteURL}}
+POST {{remoteURL}}/orders
 Content-Type: application/json
 
-{ "email": "jane@doe.com" }
+{   
+    "cabin": "Jane's Cabbe",
+    "service": "Dusting",
+    "email": "jane@doe.com"
+}
