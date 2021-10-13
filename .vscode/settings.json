@@ -8,7 +8,8 @@
             "name": "fw-teaching_PostgreSQL",
             "database": "bsrtmxhc",
             "username": "bsrtmxhc",
-            "password": "c3bc598b4340e96dd6dd"
+            "password": "c3bc598b4340e96dd6dd",
+            "connectString": "postgresql://bsrtmxhc:c3bc598b4340e96dd6dd@128.214.253.167:5432/bsrtmxhc"
         }
     ]
 }
