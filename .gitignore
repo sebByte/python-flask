@@ -139,3 +139,4 @@ cython_debug/
 
 # Other
 node_modules/
+fw-teaching_PostgreSQL.session.sql

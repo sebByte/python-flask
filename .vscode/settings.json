@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "postgresql://bsrtmxhc:c3bc598b4340e96dd6dd@128.214.253.167:5432/bsrtmxhc",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "fw-teaching_PostgreSQL",
+            "database": "bsrtmxhc",
+            "username": "bsrtmxhc",
+            "password": "c3bc598b4340e96dd6dd"
+        }
+    ]
+}

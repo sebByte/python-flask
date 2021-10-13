@@ -1,5 +1,11 @@
-@remoteURL=http://127.0.0.1:5000/
 #@remoteURL=https://nameless-shore-55233.herokuapp.com/
+@remoteURL=http://127.0.0.1:5000
 
-### GET
+### GET, Get all users
 GET {{remoteURL}}
+
+### POST, Create new user
+POST {{remoteURL}}
+Content-Type: application/json
+
+{ "email": "jane@doe.com" }
