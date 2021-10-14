@@ -1,0 +1,62 @@
+#@baseURL=https://nameless-shore-55233.herokuapp.com/
+@baseURL=http://127.0.0.1:5000
+@cabinURL=https://frozen-headland-66513.herokuapp.com
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTU2YzA4YjAwZmRjNWQ3NGZiMGNkMmQiLCJlbWFpbCI6ImJhZEBkb2UuY29tIiwiaWF0IjoxNjM0MDMxMTg5LCJleHAiOjE2MzQ2MzU5ODl9.2phd0Q2buOlOEtVc2ExPhD-HBpBObFNgosfeGHDW8No
+
+### Login to Cabins
+POST {{cabinURL}}/users/login
+Content-Type: application/json
+
+{ "email": "bad@doe.com", "password": "password123" }
+
+### Get cabins
+GET {{cabinURL}}/cabins
+Authorization: Barer {{token}}
+
+
+
+
+
+### GET, Get all orders
+GET {{baseURL}}/orders
+
+### POST, Create new order
+POST {{baseURL}}/orders
+Content-Type: application/json
+
+{   
+    "cabin": "Hus",
+    "service": "Something"
+}
+
+### POST, Update/change a order by ID
+GET {{baseURL}}/orders/id
+
+
+### DELETE, Remove a order by ID
+DELETE  {{baseURL}}/orders/id
+
+
+
+
+
+### GET, Get all services
+GET {{baseURL}}/services
+
+### POST, Create new service
+POST {{baseURL}}/services
+Content-Type: application/json
+
+{   
+    "service": "Right"
+}
+
+### PUT, Update/change a service by ID
+PUT {{baseURL}}/services/10
+
+{   
+    "service": "Pipe cleaning"
+}
+
+### DELETE, Remove a service by ID
+DELETE  {{baseURL}}/services/11

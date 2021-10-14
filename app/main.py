@@ -11,81 +11,98 @@ load_dotenv()
 # Create Flask instance
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_URL')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('FDB_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    updated_at = db.Column(db.DateTime(), default=db.func.now(), onupdate=db.func.now())
+# Models
 
-    def __repr__(self):
-        return '<User {}>'.format(self.email())
-
-# Default route to /
-@app.route("/", methods = ['GET', 'POST', 'PUT', 'DELETE'])
-def index():
-    ret = []
-    # GET all users
-    if request.method == 'GET':
-        # Loop for every line in the User-column and add them to ret
-        for u in User.query.all():
-            ret.append({'id': u.id, 'email': u.email, 'updated_at': u.updated_at})
-    
-    # POST/Create a new user
-    if request.method == 'POST':
-        body = request.get_json()
-        new_user = User(email=body['email'])
-        db.session.add(new_user)
-        db.session.commit()
-        ret = [ "New user added" ]
-
-    # PUT/Update user
-    if request.method == 'PUT':
-        ret = [ "PUT" ]
-
-    if request.method == 'DELETE':
-        ret = [ "DELETE" ]
-    
-    return jsonify(ret)
 
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    #date
-    cabin = db.Column(db.string(120))
-    service = db.Column(db.string(120))
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    updated_at = db.Column(db.DateTime(), default=db.func.now(), onupdate=db.func.now())
+    cabin = db.Column(db.String(120))
+    service = db.Column(db.String(120))
+    updated_at = db.Column(
+        db.DateTime(), default=db.func.now(), onupdate=db.func.now())
 
-# Default route to /orders
-@app.route("/orders", methods = ['GET', 'POST', 'PUT', 'DELETE'])
+
+class Service(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    service = db.Column(db.String(120))
+
+
+# Route to /orders
+@app.route("/orders", methods=['GET', 'POST'])
 def order():
-    order = []
-    
-    # GET all orders
+    a = []
+
     if request.method == 'GET':
-        # Loop for every line in the User-column and add them to ret
-        for u in Order.query.all():
-            order.append({'id': u.id, 'cabin': u.cabin, 'service': u.service, 'email': u.email, 'updated_at': u.updated_at})
-    
-    # POST/Create a new user
+        for i in Order.query.all():
+            a.append({'id': i.id, 'cabin': i.cabin,
+                      'service': i.service, 'updated_at': i.updated_at})
+
     if request.method == 'POST':
         body = request.get_json()
         new_order = Order(
             cabin=body['cabin'],
             service=body['service'],
-            email=body['email']
         )
         db.session.add(new_order)
         db.session.commit()
-        order = [ "New order added" ]
 
-    # PUT/Update user
+        a = ["New order added"]
+
+    return jsonify(a)
+
+@app.route("/orders/<id>", methods=['PUT', 'DELETE'])
+def order_by(id):
+    b = []
+
     if request.method == 'PUT':
-        order = [ "PUT" ]
+        b = ["Order not working"]
 
     if request.method == 'DELETE':
-        order = [ "DELETE" ]
-    
-    return jsonify(order)
+        delete_order = Order.query.get(id)
+        db.session.delete(delete_order)
+        db.session.commit()
+
+        b = ["Order was succesuflly deleted"]
+
+    return jsonify(b)
+
+
+# Default route to /services
+@app.route("/services", methods=['GET', 'POST'])
+def service():
+    c = []
+
+    if request.method == 'GET':
+        for j in Service.query.all():
+            c.append({'id': j.id, 'service': j.service})
+
+    if request.method == 'POST':
+        body = request.get_json()
+        new_service = Service(service=body['service'])
+        db.session.add(new_service)
+        db.session.commit()
+
+        c = ["New service added"]
+
+    return jsonify(c)
+
+
+@app.route("/services/<id>", methods=['PUT', 'DELETE'])
+def service_by(id):
+    d = []
+
+    if request.method == 'PUT':
+        d = ["Service not working"]
+
+    if request.method == 'DELETE':
+        delete_service = Service.query.get(id)
+        db.session.delete(delete_service)
+        db.session.commit()
+
+        d = ["Service was succesuflly deleted"]
+
+    return jsonify(d)
