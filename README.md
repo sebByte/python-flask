@@ -1,11 +1,6 @@
-# Python Flask, with fw-teachingSQL
+# Python Flask
 
-README WIP
+An assigment in the course Web Services and Cloud Technology.
+The aim of this course is to provide the student knowledge in how to develop web services (REST APIs) in both the Node.js and ASP.NET environments
 
-Del 1 skip
-
-Del 2 fick jag allt annat än PUT request att fungera, kollar senare mer på saken om jag hinner. Men GET, POST och DELETE fick jag gjort m.h.a lektionen samt https://flask-sqlalchemy.palletsprojects.com/en/2.x/
-
-Del 3 förstod jag int riktight helt och hållet var ni va efter. Jag utförde uppgiften som jag förstod det som och lag till /cabins till .http
-
-Del 4 har sin egen repo och förklarning https://github.com/sebByte/reimagined-octo-doodle
+An additional repo for a graphical application using Electron that is tied to this assigment https://github.com/sebByte/reimagined-octo-doodle
